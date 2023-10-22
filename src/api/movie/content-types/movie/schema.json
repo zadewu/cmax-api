@@ -48,6 +48,16 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "movies"
+    },
+    "outNow": {
+      "type": "date",
+      "required": true
+    },
+    "hot_movie": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::hot-movie.hot-movie",
+      "inversedBy": "movies"
     }
   }
 }

@@ -712,6 +712,41 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
+export interface ApiHotMovieHotMovie extends Schema.CollectionType {
+  collectionName: 'hot_movies';
+  info: {
+    singularName: 'hot-movie';
+    pluralName: 'hot-movies';
+    displayName: 'hot-movie';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    activeDate: Attribute.Date & Attribute.Required & Attribute.Unique;
+    movies: Attribute.Relation<
+      'api::hot-movie.hot-movie',
+      'oneToMany',
+      'api::movie.movie'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::hot-movie.hot-movie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::hot-movie.hot-movie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiMovieMovie extends Schema.CollectionType {
   collectionName: 'movies';
   info: {
@@ -744,6 +779,12 @@ export interface ApiMovieMovie extends Schema.CollectionType {
       'api::movie.movie',
       'manyToMany',
       'api::category.category'
+    >;
+    outNow: Attribute.Date & Attribute.Required;
+    hot_movie: Attribute.Relation<
+      'api::movie.movie',
+      'manyToOne',
+      'api::hot-movie.hot-movie'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -780,6 +821,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::category.category': ApiCategoryCategory;
+      'api::hot-movie.hot-movie': ApiHotMovieHotMovie;
       'api::movie.movie': ApiMovieMovie;
     }
   }
