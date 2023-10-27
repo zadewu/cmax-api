@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "combos",
+  "info": {
+    "singularName": "combo",
+    "pluralName": "combos",
+    "displayName": "Combo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "desktopImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "mobileImages": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "required": true
+    }
+  }
+}

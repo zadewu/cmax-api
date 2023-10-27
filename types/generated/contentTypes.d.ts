@@ -677,12 +677,49 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBookingBooking extends Schema.SingleType {
+  collectionName: 'bookings';
+  info: {
+    singularName: 'booking';
+    pluralName: 'bookings';
+    displayName: 'Booking';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::booking.booking',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCategoryCategory extends Schema.CollectionType {
   collectionName: 'categories';
   info: {
     singularName: 'category';
     pluralName: 'categories';
-    displayName: 'category';
+    displayName: 'Category';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -712,34 +749,136 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
   };
 }
 
-export interface ApiHotMovieHotMovie extends Schema.CollectionType {
-  collectionName: 'hot_movies';
+export interface ApiComboCombo extends Schema.SingleType {
+  collectionName: 'combos';
   info: {
-    singularName: 'hot-movie';
-    pluralName: 'hot-movies';
-    displayName: 'hot-movie';
+    singularName: 'combo';
+    pluralName: 'combos';
+    displayName: 'Combo';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    activeDate: Attribute.Date & Attribute.Required & Attribute.Unique;
-    movies: Attribute.Relation<
-      'api::hot-movie.hot-movie',
-      'oneToMany',
-      'api::movie.movie'
-    >;
+    desktopImage: Attribute.Media & Attribute.Required;
+    mobileImages: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::hot-movie.hot-movie',
+      'api::combo.combo',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::hot-movie.hot-movie',
+      'api::combo.combo',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiContactContact extends Schema.SingleType {
+  collectionName: 'contacts';
+  info: {
+    singularName: 'contact';
+    pluralName: 'contacts';
+    displayName: 'Contact';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    facebook: Attribute.String;
+    tiktok: Attribute.String;
+    instagram: Attribute.String;
+    hotline: Attribute.String;
+    address: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact.contact',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDecorationDecoration extends Schema.SingleType {
+  collectionName: 'decorations';
+  info: {
+    singularName: 'decoration';
+    pluralName: 'decorations';
+    displayName: 'Decoration';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::decoration.decoration',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::decoration.decoration',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFoodMenuFoodMenu extends Schema.SingleType {
+  collectionName: 'food_menus';
+  info: {
+    singularName: 'food-menu';
+    pluralName: 'food-menus';
+    displayName: 'Food Menu';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::food-menu.food-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::food-menu.food-menu',
       'oneToOne',
       'admin::user'
     > &
@@ -752,20 +891,20 @@ export interface ApiMovieMovie extends Schema.CollectionType {
   info: {
     singularName: 'movie';
     pluralName: 'movies';
-    displayName: 'movie';
+    displayName: 'Movie';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    duration: Attribute.Integer &
+    movieTitle: Attribute.String & Attribute.Required;
+    movieDuration: Attribute.Integer &
       Attribute.Required &
       Attribute.SetMinMax<{
         min: 0;
       }>;
-    image: Attribute.Media & Attribute.Required;
+    image: Attribute.Media;
     trailerLink: Attribute.String & Attribute.Required;
     description: Attribute.RichText &
       Attribute.Required &
@@ -781,11 +920,6 @@ export interface ApiMovieMovie extends Schema.CollectionType {
       'api::category.category'
     >;
     outNow: Attribute.Date & Attribute.Required;
-    hot_movie: Attribute.Relation<
-      'api::movie.movie',
-      'manyToOne',
-      'api::hot-movie.hot-movie'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -797,6 +931,111 @@ export interface ApiMovieMovie extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::movie.movie',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPricingPricing extends Schema.SingleType {
+  collectionName: 'pricings';
+  info: {
+    singularName: 'pricing';
+    pluralName: 'pricings';
+    displayName: 'Pricing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    content: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pricing.pricing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pricing.pricing',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPromotionPromotion extends Schema.CollectionType {
+  collectionName: 'promotions';
+  info: {
+    singularName: 'promotion';
+    pluralName: 'promotions';
+    displayName: 'Promotion';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.Text & Attribute.Required;
+    content: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'toolbar';
+        }
+      >;
+    image: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::promotion.promotion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::promotion.promotion',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSlideshowSlideshow extends Schema.SingleType {
+  collectionName: 'slideshows';
+  info: {
+    singularName: 'slideshow';
+    pluralName: 'slideshows';
+    displayName: 'Slideshow';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    images: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::slideshow.slideshow',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::slideshow.slideshow',
       'oneToOne',
       'admin::user'
     > &
@@ -820,9 +1059,16 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::booking.booking': ApiBookingBooking;
       'api::category.category': ApiCategoryCategory;
-      'api::hot-movie.hot-movie': ApiHotMovieHotMovie;
+      'api::combo.combo': ApiComboCombo;
+      'api::contact.contact': ApiContactContact;
+      'api::decoration.decoration': ApiDecorationDecoration;
+      'api::food-menu.food-menu': ApiFoodMenuFoodMenu;
       'api::movie.movie': ApiMovieMovie;
+      'api::pricing.pricing': ApiPricingPricing;
+      'api::promotion.promotion': ApiPromotionPromotion;
+      'api::slideshow.slideshow': ApiSlideshowSlideshow;
     }
   }
 }

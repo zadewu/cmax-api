@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "decorations",
+  "info": {
+    "singularName": "decoration",
+    "pluralName": "decorations",
+    "displayName": "Decoration"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "content": {
+      "type": "customField",
+      "options": {
+        "preset": "toolbar"
+      },
+      "customField": "plugin::ckeditor5.CKEditor"
+    }
+  }
+}
