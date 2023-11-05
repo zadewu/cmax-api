@@ -1,29 +1,29 @@
-import React from 'react';
+import React from 'react'
 
-import { Box, Flex, Typography } from '@strapi/design-system';
-import { pxToRem, useTracking } from '@strapi/helper-plugin';
-import { useIntl } from 'react-intl';
-import styled from 'styled-components';
+import { Box, Flex, Typography } from '@strapi/design-system'
+import { pxToRem, useTracking } from '@strapi/helper-plugin'
+import { useIntl } from 'react-intl'
+import styled from 'styled-components'
 
-import cloudIconBackgroundImage from './assets/strapi-cloud-background.png';
-import cloudFlagsImage from './assets/strapi-cloud-flags.svg';
-import cloudIcon from './assets/strapi-cloud-icon.svg';
+import cloudIconBackgroundImage from './assets/strapi-cloud-background.png'
+import cloudFlagsImage from './assets/strapi-cloud-flags.svg'
+import cloudIcon from './assets/strapi-cloud-icon.svg'
 
 const BlockLink = styled.a`
   text-decoration: none;
-`;
+`
 
 const CloudCustomWrapper = styled(Box)`
   background-image: url(${({ backgroundImage }) => backgroundImage});
-`;
+`
 
 const CloudIconWrapper = styled(Flex)`
   background: rgba(255, 255, 255, 0.3);
-`;
+`
 
 const CloudBox = () => {
-  const { formatMessage } = useIntl();
-  const { trackUsage } = useTracking();
+  const { formatMessage } = useIntl()
+  const { trackUsage } = useTracking()
 
   return (
     <BlockLink
@@ -31,7 +31,7 @@ const CloudBox = () => {
       target="_blank"
       rel="noopener noreferrer nofollow"
       onClick={() => {
-        trackUsage('didClickOnTryStrapiCloudSection');
+        trackUsage('didClickOnTryStrapiCloudSection')
       }}
     >
       <Flex
@@ -42,7 +42,11 @@ const CloudBox = () => {
         position="relative"
         gap={6}
       >
-        <CloudCustomWrapper backgroundImage={cloudIconBackgroundImage} hasRadius padding={3}>
+        <CloudCustomWrapper
+          backgroundImage={cloudIconBackgroundImage}
+          hasRadius
+          padding={3}
+        >
           <CloudIconWrapper
             width={pxToRem(32)}
             height={pxToRem(32)}
@@ -75,11 +79,17 @@ const CloudBox = () => {
                 'A fully composable, and collaborative platform to boost your team velocity.',
             })}
           </Typography>
-          <Box src={cloudFlagsImage} position="absolute" top={0} right={0} as="img" />
+          <Box
+            src={cloudFlagsImage}
+            position="absolute"
+            top={0}
+            right={0}
+            as="img"
+          />
         </Flex>
       </Flex>
     </BlockLink>
-  );
-};
+  )
+}
 
-export default CloudBox;
+export default CloudBox

@@ -1,4 +1,4 @@
-export default ({env}) => ({
+export default ({ env }) => ({
   upload: {
     config: {
       breakpoints: {
@@ -7,6 +7,22 @@ export default ({env}) => ({
         medium: 750,
         small: 500
       }
+    }
+  },
+  publisher: {
+    enabled: true,
+    config: {
+      components: {
+        dateTimePicker: {
+          step: 15,
+        }
+      },
+      hooks: {
+        beforePublish: async ({ strapi, uid, entity }) => { },
+        afterPublish: async ({ strapi, uid, entity }) => { },
+        beforeUnpublish: async ({ strapi, uid, entity }) => { },
+        afterUnpublish: async ({ strapi, uid, entity }) => { },
+      },
     }
   },
   graphql: {

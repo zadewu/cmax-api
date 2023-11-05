@@ -1,18 +1,18 @@
-import React from 'react';
+import React from 'react'
 
-import { Box, Button, Flex, Typography } from '@strapi/design-system';
-import { Link } from '@strapi/design-system/v2';
-import { ArrowRight } from '@strapi/icons';
-import PropTypes from 'prop-types';
-import { useIntl } from 'react-intl';
-import styled from 'styled-components';
+import { Box, Button, Flex, Typography } from '@strapi/design-system'
+import { Link } from '@strapi/design-system/v2'
+import { ArrowRight } from '@strapi/icons'
+import PropTypes from 'prop-types'
+import { useIntl } from 'react-intl'
+import styled from 'styled-components'
 
 const WordWrap = styled(Typography)`
   word-break: break-word;
-`;
+`
 
 const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
-  const { formatMessage } = useIntl();
+  const { formatMessage } = useIntl()
 
   return (
     <div>
@@ -60,17 +60,17 @@ const HomeHeader = ({ hasCreatedContentType, onCreateCT }) => {
         </Flex>
       </Box>
     </div>
-  );
-};
+  )
+}
 
 HomeHeader.defaultProps = {
   hasCreatedContentType: undefined,
   onCreateCT: undefined,
-};
+}
 
 HomeHeader.propTypes = {
   hasCreatedContentType: PropTypes.bool,
   onCreateCT: PropTypes.func,
-};
+}
 
-export default HomeHeader;
+export default HomeHeader

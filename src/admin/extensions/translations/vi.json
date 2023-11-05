@@ -268,5 +268,16 @@
   "Decoration": "ND Trang trí",
   "Food Menu": "Menu đồ ăn",
   "Pricing": "Giá cả dịch vụ",
-  "Slideshow": "Banner trang chủ"
+  "Slideshow": "Banner trang chủ",
+  "publisher.action.header.publish.title": "Ngày đăng",
+  "publisher.action.header.unpublish.title": "Ngày gỡ",
+  "publisher.action.footer.publish.button.add": "Hẹn giờ đăng",
+  "publisher.action.footer.publish.button.edit": "Chỉnh sửa",
+  "publisher.action.footer.publish.button.delete": "Xóa",
+  "publisher.action.footer.publish.button.save": "Lưu",
+  "publisher.action.footer.unpublish.button.add": "Hẹn giờ gỡ",
+  "publisher.action.footer.unpublish.button.edit": "Chỉnh sửa",
+  "publisher.action.footer.unpublish.button.delete": "Xóa",
+  "publisher.action.footer.unpublish.button.save": "Lưu",
+  "publisher.plugin.name": "Hẹn giờ đăng bài"
 }

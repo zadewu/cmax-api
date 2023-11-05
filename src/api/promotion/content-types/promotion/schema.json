@@ -24,9 +24,7 @@
       "customField": "plugin::ckeditor5.CKEditor"
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false,
       "required": true

@@ -7,7 +7,8 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "pretty": "npx prettier src/ --write"
   },
   "dependencies": {
     "@_sh/strapi-plugin-ckeditor": "^2.0.4",
@@ -16,7 +17,8 @@
     "@strapi/plugin-users-permissions": "4.15.0",
     "@strapi/strapi": "4.15.0",
     "lodash": "^4.17.21",
-    "pg": "8.8.0"
+    "pg": "8.8.0",
+    "strapi-plugin-publisher": "^1.5.2"
   },
   "author": {
     "name": "A Strapi developer"
@@ -28,5 +30,8 @@
     "node": ">=18.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "3.0.3"
+  }
 }

@@ -3,23 +3,23 @@
  *
  */
 
-import React, { useMemo } from 'react';
+import React, { useMemo } from 'react'
 
-import { Box, Grid, GridItem, Layout, Main } from '@strapi/design-system';
-import { LoadingIndicatorPage, useGuidedTour } from '@strapi/helper-plugin';
-import { Helmet } from 'react-helmet';
-import { FormattedMessage } from 'react-intl';
-import { useHistory } from 'react-router-dom';
-import styled from 'styled-components';
+import { Box, Grid, GridItem, Layout, Main } from '@strapi/design-system'
+import { LoadingIndicatorPage, useGuidedTour } from '@strapi/helper-plugin'
+import { Helmet } from 'react-helmet'
+import { FormattedMessage } from 'react-intl'
+import { useHistory } from 'react-router-dom'
+import styled from 'styled-components'
 
-import { GuidedTourHomepage } from '../../components/GuidedTour/Homepage';
-import { useContentTypes } from '../../hooks/useContentTypes';
-import { useEnterprise } from '../../hooks/useEnterprise';
+import { GuidedTourHomepage } from '../../components/GuidedTour/Homepage'
+import { useContentTypes } from '../../hooks/useContentTypes'
+import { useEnterprise } from '../../hooks/useEnterprise'
 
-import cornerOrnamentPath from './assets/corner-ornament.svg';
-import ContentBlocks from './ContentBlocks';
-import HomeHeader from './HomeHeader';
-import SocialLinks from './SocialLinks';
+import cornerOrnamentPath from './assets/corner-ornament.svg'
+import ContentBlocks from './ContentBlocks'
+import HomeHeader from './HomeHeader'
+import SocialLinks from './SocialLinks'
 
 const LogoContainer = styled(Box)`
   position: absolute;
@@ -29,35 +29,41 @@ const LogoContainer = styled(Box)`
   img {
     width: ${150 / 16}rem;
   }
-`;
+`
 
 export const HomePageCE = () => {
   // Temporary until we develop the menu API
-  const { collectionTypes, singleTypes, isLoading: isLoadingForModels } = useContentTypes();
-  const { guidedTourState, isGuidedTourVisible, isSkipped } = useGuidedTour();
+  const {
+    collectionTypes,
+    singleTypes,
+    isLoading: isLoadingForModels,
+  } = useContentTypes()
+  const { guidedTourState, isGuidedTourVisible, isSkipped } = useGuidedTour()
   const showGuidedTour =
     !Object.values(guidedTourState).every((section) =>
       Object.values(section).every((step) => step)
     ) &&
     isGuidedTourVisible &&
-    !isSkipped;
-  const { push } = useHistory();
+    !isSkipped
+  const { push } = useHistory()
   const handleClick = (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    push('/plugins/content-type-builder/content-types/create-content-type');
-  };
+    push('/plugins/content-type-builder/content-types/create-content-type')
+  }
 
   const hasAlreadyCreatedContentTypes = useMemo(() => {
-    const filterContentTypes = (contentTypes) => contentTypes.filter((c) => c.isDisplayed);
+    const filterContentTypes = (contentTypes) =>
+      contentTypes.filter((c) => c.isDisplayed)
 
     return (
-      filterContentTypes(collectionTypes).length > 1 || filterContentTypes(singleTypes).length > 0
-    );
-  }, [collectionTypes, singleTypes]);
+      filterContentTypes(collectionTypes).length > 1 ||
+      filterContentTypes(singleTypes).length > 0
+    )
+  }, [collectionTypes, singleTypes])
 
   if (isLoadingForModels) {
-    return <LoadingIndicatorPage />;
+    return <LoadingIndicatorPage />
   }
 
   return (
@@ -89,22 +95,22 @@ export const HomePageCE = () => {
         </Box>
       </Main>
     </Layout>
-  );
-};
+  )
+}
 
 function HomePageSwitch() {
   const HomePage = useEnterprise(
     HomePageCE,
     // eslint-disable-next-line import/no-cycle
     async () => (await import('../../../../ee/admin/pages/HomePage')).HomePageEE
-  );
+  )
 
   // block rendering until the EE component is fully loaded
   if (!HomePage) {
-    return null;
+    return null
   }
 
-  return <HomePage />;
+  return <HomePage />
 }
 
-export default HomePageSwitch;
+export default HomePageSwitch

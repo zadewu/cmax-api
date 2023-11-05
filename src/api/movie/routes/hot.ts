@@ -8,7 +8,7 @@ export default {
         tag: 'Movie',
         auth: false,
         policies: [],
-      }
-    }
-  ]
+      },
+    },
+  ],
 }

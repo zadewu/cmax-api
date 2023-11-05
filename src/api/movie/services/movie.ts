@@ -2,6 +2,6 @@
  * movie service
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from '@strapi/strapi'
 
-export default factories.createCoreService('api::movie.movie');
+export default factories.createCoreService('api::movie.movie')

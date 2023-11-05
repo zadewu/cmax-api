@@ -12,17 +12,13 @@
   "pluginOptions": {},
   "attributes": {
     "desktopImage": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false,
       "required": true
     },
     "mobileImages": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": true,
       "required": true

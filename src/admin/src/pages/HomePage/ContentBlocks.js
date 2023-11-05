@@ -1,24 +1,29 @@
-import React from 'react';
+import React from 'react'
 
-import { Flex } from '@strapi/design-system';
-import { ContentBox, useTracking } from '@strapi/helper-plugin';
-import { CodeSquare, FeatherSquare, InformationSquare, PlaySquare } from '@strapi/icons';
-import { useIntl } from 'react-intl';
-import styled from 'styled-components';
+import { Flex } from '@strapi/design-system'
+import { ContentBox, useTracking } from '@strapi/helper-plugin'
+import {
+  CodeSquare,
+  FeatherSquare,
+  InformationSquare,
+  PlaySquare,
+} from '@strapi/icons'
+import { useIntl } from 'react-intl'
+import styled from 'styled-components'
 
-import CloudBox from './CloudBox';
+import CloudBox from './CloudBox'
 
 const BlockLink = styled.a`
   text-decoration: none;
-`;
+`
 
 const ContentBlocks = () => {
-  const { formatMessage } = useIntl();
-  const { trackUsage } = useTracking();
+  const { formatMessage } = useIntl()
+  const { trackUsage } = useTracking()
 
   const handleClick = (eventName) => {
-    trackUsage(eventName);
-  };
+    trackUsage(eventName)
+  }
 
   return (
     <Flex direction="column" alignItems="stretch" gap={5}>
@@ -36,7 +41,8 @@ const ContentBlocks = () => {
           })}
           subtitle={formatMessage({
             id: 'app.components.BlockLink.documentation.content',
-            defaultMessage: 'Discover the essential concepts, guides and instructions.',
+            defaultMessage:
+              'Discover the essential concepts, guides and instructions.',
           })}
           icon={<InformationSquare />}
           iconBackground="primary100"
@@ -55,7 +61,8 @@ const ContentBlocks = () => {
           })}
           subtitle={formatMessage({
             id: 'app.components.BlockLink.code.content',
-            defaultMessage: 'Learn by using ready-made starters for your projects.',
+            defaultMessage:
+              'Learn by using ready-made starters for your projects.',
           })}
           icon={<CodeSquare />}
           iconBackground="warning100"
@@ -74,7 +81,8 @@ const ContentBlocks = () => {
           })}
           subtitle={formatMessage({
             id: 'app.components.BlockLink.tutorial.content',
-            defaultMessage: 'Follow step-by-step instructions to use and customize Strapi.',
+            defaultMessage:
+              'Follow step-by-step instructions to use and customize Strapi.',
           })}
           icon={<PlaySquare />}
           iconBackground="secondary100"
@@ -93,14 +101,15 @@ const ContentBlocks = () => {
           })}
           subtitle={formatMessage({
             id: 'app.components.BlockLink.blog.content',
-            defaultMessage: 'Read the latest news about Strapi and the ecosystem.',
+            defaultMessage:
+              'Read the latest news about Strapi and the ecosystem.',
           })}
           icon={<FeatherSquare />}
           iconBackground="alternative100"
         />
       </BlockLink>
     </Flex>
-  );
-};
+  )
+}
 
-export default ContentBlocks;
+export default ContentBlocks

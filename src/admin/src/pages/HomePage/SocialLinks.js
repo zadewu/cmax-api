@@ -3,26 +3,34 @@
  * SocialLink
  */
 
-import React from 'react';
+import React from 'react'
 
-import { Box, Flex, Grid, GridItem, Typography } from '@strapi/design-system';
-import { Link, LinkButton } from '@strapi/design-system/v2';
-import { useAppInfo } from '@strapi/helper-plugin';
-import { Discord, Discourse, ExternalLink, Github, Reddit, Strapi, Twitter } from '@strapi/icons';
-import { useIntl } from 'react-intl';
-import styled from 'styled-components';
+import { Box, Flex, Grid, GridItem, Typography } from '@strapi/design-system'
+import { Link, LinkButton } from '@strapi/design-system/v2'
+import { useAppInfo } from '@strapi/helper-plugin'
+import {
+  Discord,
+  Discourse,
+  ExternalLink,
+  Github,
+  Reddit,
+  Strapi,
+  Twitter,
+} from '@strapi/icons'
+import { useIntl } from 'react-intl'
+import styled from 'styled-components'
 
 const StyledDiscord = styled(Discord)`
   path {
     fill: #7289da !important;
   }
-`;
+`
 
 const StyledReddit = styled(Reddit)`
   > path:first-child {
     fill: #ff4500;
   }
-`;
+`
 const StyledStrapi = styled(Strapi)`
   > path:first-child {
     fill: #4945ff;
@@ -33,13 +41,13 @@ const StyledStrapi = styled(Strapi)`
   > path:nth-child(4) {
     fill: #9593ff;
   }
-`;
+`
 
 const StyledTwitter = styled(Twitter)`
   path {
     fill: #1da1f2 !important;
   }
-`;
+`
 
 const StyledDiscourse = styled(Discourse)`
   > path:first-child {
@@ -60,41 +68,59 @@ const StyledDiscourse = styled(Discourse)`
   > path:nth-child(6) {
     fill: #e31b23;
   }
-`;
+`
 
 const socialLinks = [
   {
-    name: { id: 'app.components.HomePage.community.links.github', defaultMessage: 'Github' },
+    name: {
+      id: 'app.components.HomePage.community.links.github',
+      defaultMessage: 'Github',
+    },
     link: 'https://github.com/strapi/strapi/',
     icon: <Github fill="#7289DA" />,
     alt: 'github',
   },
   {
-    name: { id: 'app.components.HomePage.community.links.discord', defaultMessage: 'Discord' },
+    name: {
+      id: 'app.components.HomePage.community.links.discord',
+      defaultMessage: 'Discord',
+    },
     link: 'https://discord.strapi.io/',
     icon: <StyledDiscord />,
     alt: 'discord',
   },
   {
-    name: { id: 'app.components.HomePage.community.links.reddit', defaultMessage: 'Reddit' },
+    name: {
+      id: 'app.components.HomePage.community.links.reddit',
+      defaultMessage: 'Reddit',
+    },
     link: 'https://www.reddit.com/r/Strapi/',
     icon: <StyledReddit />,
     alt: 'reddit',
   },
   {
-    name: { id: 'app.components.HomePage.community.links.twitter', defaultMessage: 'Twitter' },
+    name: {
+      id: 'app.components.HomePage.community.links.twitter',
+      defaultMessage: 'Twitter',
+    },
     link: 'https://twitter.com/strapijs',
     icon: <StyledTwitter />,
     alt: 'twitter',
   },
   {
-    name: { id: 'app.components.HomePage.community.links.forum', defaultMessage: 'Forum' },
+    name: {
+      id: 'app.components.HomePage.community.links.forum',
+      defaultMessage: 'Forum',
+    },
     link: 'https://forum.strapi.io',
     icon: <StyledDiscourse />,
     alt: 'forum',
   },
   {
-    name: { id: 'app.components.HomePage.community.links.blog', defaultMessage: 'Blog' },
+    name: {
+      id: 'app.components.HomePage.community.links.blog',
+      defaultMessage: 'Blog',
+    },
     link: 'https://strapi.io/blog?utm_source=referral&utm_medium=admin&utm_campaign=career%20page',
     icon: <StyledStrapi />,
     alt: 'blog',
@@ -108,7 +134,7 @@ const socialLinks = [
     icon: <StyledStrapi />,
     alt: 'career',
   },
-];
+]
 
 const LinkCustom = styled(LinkButton)`
   display: flex;
@@ -123,16 +149,16 @@ const LinkCustom = styled(LinkButton)`
   span {
     word-break: keep-all;
   }
-`;
+`
 
 const GridGap = styled(Grid)`
   row-gap: ${({ theme }) => theme.spaces[2]};
   column-gap: ${({ theme }) => theme.spaces[4]};
-`;
+`
 
 const SocialLinks = () => {
-  const { formatMessage } = useIntl();
-  const { communityEdition } = useAppInfo();
+  const { formatMessage } = useIntl()
+  const { communityEdition } = useAppInfo()
 
   const socialLinksExtended = [
     ...socialLinks,
@@ -146,7 +172,7 @@ const SocialLinks = () => {
         defaultMessage: 'Get help',
       },
     },
-  ];
+  ]
 
   return (
     <Box
@@ -177,7 +203,11 @@ const SocialLinks = () => {
               })}
             </Typography>
           </Flex>
-          <Link href="https://feedback.strapi.io/" isExternal endIcon={<ExternalLink />}>
+          <Link
+            href="https://feedback.strapi.io/"
+            isExternal
+            endIcon={<ExternalLink />}
+          >
             {formatMessage({
               id: 'app.components.HomePage.roadmap',
               defaultMessage: 'See our road map',
@@ -189,15 +219,21 @@ const SocialLinks = () => {
         {socialLinksExtended.map(({ icon, link, name }) => {
           return (
             <GridItem col={6} s={12} key={name.id}>
-              <LinkCustom size="L" startIcon={icon} variant="tertiary" href={link} isExternal>
+              <LinkCustom
+                size="L"
+                startIcon={icon}
+                variant="tertiary"
+                href={link}
+                isExternal
+              >
                 {formatMessage(name)}
               </LinkCustom>
             </GridItem>
-          );
+          )
         })}
       </GridGap>
     </Box>
-  );
-};
+  )
+}
 
-export default SocialLinks;
+export default SocialLinks

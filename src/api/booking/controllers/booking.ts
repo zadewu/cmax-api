@@ -4,4 +4,4 @@
 
 import { factories } from '@strapi/strapi'
 
-export default factories.createCoreController('api::booking.booking');
+export default factories.createCoreController('api::booking.booking')
