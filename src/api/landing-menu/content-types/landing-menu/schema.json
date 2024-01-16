@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "landing_menus",
+  "info": {
+    "singularName": "landing-menu",
+    "pluralName": "landing-menus",
+    "displayName": "Landing Menu"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "desktopImages": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "mobileImages": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

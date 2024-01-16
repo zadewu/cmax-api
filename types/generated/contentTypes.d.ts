@@ -794,12 +794,13 @@ export interface ApiComboCombo extends Schema.SingleType {
     singularName: 'combo'
     pluralName: 'combos'
     displayName: 'Combo'
+    description: ''
   }
   options: {
     draftAndPublish: true
   }
   attributes: {
-    desktopImage: Attribute.Media & Attribute.Required
+    desktopImages: Attribute.Media & Attribute.Required
     mobileImages: Attribute.Media & Attribute.Required
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
@@ -949,6 +950,37 @@ export interface ApiFoodMenuFoodMenu extends Schema.SingleType {
       Attribute.Private
     updatedBy: Attribute.Relation<
       'api::food-menu.food-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+  }
+}
+
+export interface ApiLandingMenuLandingMenu extends Schema.SingleType {
+  collectionName: 'landing_menus'
+  info: {
+    singularName: 'landing-menu'
+    pluralName: 'landing-menus'
+    displayName: 'Landing Menu'
+  }
+  options: {
+    draftAndPublish: true
+  }
+  attributes: {
+    desktopImages: Attribute.Media
+    mobileImages: Attribute.Media
+    createdAt: Attribute.DateTime
+    updatedAt: Attribute.DateTime
+    publishedAt: Attribute.DateTime
+    createdBy: Attribute.Relation<
+      'api::landing-menu.landing-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private
+    updatedBy: Attribute.Relation<
+      'api::landing-menu.landing-menu',
       'oneToOne',
       'admin::user'
     > &
@@ -1137,6 +1169,7 @@ declare module '@strapi/types' {
       'api::decoration.decoration': ApiDecorationDecoration
       'api::event.event': ApiEventEvent
       'api::food-menu.food-menu': ApiFoodMenuFoodMenu
+      'api::landing-menu.landing-menu': ApiLandingMenuLandingMenu
       'api::movie.movie': ApiMovieMovie
       'api::pricing.pricing': ApiPricingPricing
       'api::promotion.promotion': ApiPromotionPromotion
