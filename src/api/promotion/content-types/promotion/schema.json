@@ -4,7 +4,8 @@
   "info": {
     "singularName": "promotion",
     "pluralName": "promotions",
-    "displayName": "Promotion"
+    "displayName": "Promotion",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -24,10 +25,15 @@
       "customField": "plugin::ckeditor5.CKEditor"
     },
     "image": {
-      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "subTitle": {
+      "type": "string"
     }
   }
 }

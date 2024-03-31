@@ -21,6 +21,11 @@
       "relation": "manyToMany",
       "target": "api::movie.movie",
       "mappedBy": "categories"
+    },
+    "priority": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
     }
   }
 }

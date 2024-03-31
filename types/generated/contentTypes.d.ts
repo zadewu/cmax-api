@@ -770,6 +770,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
       'manyToMany',
       'api::movie.movie'
     >
+    priority: Attribute.Integer &
+      Attribute.SetMinMax<{
+        min: 0
+      }> &
+      Attribute.DefaultTo<0>
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
@@ -1082,6 +1087,7 @@ export interface ApiPromotionPromotion extends Schema.CollectionType {
     singularName: 'promotion'
     pluralName: 'promotions'
     displayName: 'Promotion'
+    description: ''
   }
   options: {
     draftAndPublish: true
@@ -1097,6 +1103,7 @@ export interface ApiPromotionPromotion extends Schema.CollectionType {
         }
       >
     image: Attribute.Media & Attribute.Required
+    subTitle: Attribute.String
     createdAt: Attribute.DateTime
     updatedAt: Attribute.DateTime
     publishedAt: Attribute.DateTime
